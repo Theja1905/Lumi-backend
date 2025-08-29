@@ -24,7 +24,7 @@ app.post("/api/chat", async (req, res) => {
       return res.status(400).json({ error: "Invalid request format" });
     }
 
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // Create enhanced prompt with conversation context
